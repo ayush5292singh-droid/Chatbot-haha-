@@ -40,3 +40,20 @@ window.speechSynthesis.speak(voice);
 
     chat.scrollTop = chat.scrollHeight;
 }
+function startVoice(){
+
+let recognition = new webkitSpeechRecognition();
+
+recognition.lang = "en-US";
+
+recognition.onresult = function(event){
+
+let text = event.results[0][0].transcript;
+
+document.getElementById("input").value = text;
+
+};
+
+recognition.start();
+
+}
