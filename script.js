@@ -1,70 +1,38 @@
-window.speechSynthesis.speak(
-new SpeechSynthesisUtterance("Hello, voice is working")
-);
 function send(){
 
-    let input = document.getElementById("input");
-    let message = input.value;
+let input = document.getElementById("input");
+let message = input.value;
+
+if(message.trim()==""){
+    return;
+}
+
+
+// Speak only YOUR message
 let voice = new SpeechSynthesisUtterance(message);
-    
-voice.lang = "en-US";
-voice.rate = 1;
-voice.pitch = 1;
-
-window.speechSynthesis.speak(voice);
-    if(message === ""){
-        return;
-    }
-
-    let chat = document.getElementById("messages");
-
-    chat.innerHTML += 
-    "<p class='user'>You: " + message + "</p>";
-
-    let reply = "I am a chatbot. You said: " + message;
-setTimeout(function(){
-
-let voice = new SpeechSynthesisUtterance(reply);
 
 voice.lang = "en-US";
 voice.rate = 1;
 voice.pitch = 1;
 
+window.speechSynthesis.cancel();
 window.speechSynthesis.speak(voice);
 
-},500);
-    chat.innerHTML += 
-    "<p class='bot'>Bot: " + reply + "</p>";
 
-    input.value = "";
+// Show your message
+let chat = document.getElementById("messages");
 
-    chat.scrollTop = chat.scrollHeight;
-}
-function startVoice(){
+chat.innerHTML += 
+"<p>You: "+message+"</p>";
 
-    alert("Microphone button clicked");
-}
 
-}
+// Bot reply
+let botReply = "I am ready to answer your questions.";
 
-let recognition = new webkitSpeechRecognition();
+chat.innerHTML += 
+"<p>Bot: "+botReply+"</p>";
 
-recognition.lang = "en-US";
-recognition.continuous = false;
-recognition.interimResults = false;
 
-recognition.onresult = function(event){
-
-let text = event.results[0][0].transcript;
-
-document.getElementById("input").value = text;
-
-};
-
-recognition.start();
-
-}
-
-recognition.start();
+input.value="";
 
 }
