@@ -42,9 +42,9 @@ window.speechSynthesis.speak(voice);
 }
 function startVoice(){
 
-if(!('webkitSpeechRecognition' in window)){
-    alert("Voice input is not supported in this browser");
-    return;
+    alert("Microphone button clicked");
+}
+
 }
 
 let recognition = new webkitSpeechRecognition();
