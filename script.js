@@ -27,7 +27,33 @@ chat.innerHTML +=
 
 
 // Bot reply
-let botReply = "I am ready to answer your questions.";
+let botReply = "";
+
+let q = message.toLowerCase();
+
+if(q.includes("hello") || q.includes("hi")){
+    botReply = "Hello! 😊 Nice to talk with you. How can I help you?";
+}
+
+else if(q.includes("your name")){
+    botReply = "I am your personal AI assistant.";
+}
+
+else if(q.includes("how are you")){
+    botReply = "I am working perfectly and ready to help you.";
+}
+
+else if(q.includes("who made you")){
+    botReply = "I was created by you as a chatbot project.";
+}
+
+else if(q.includes("thank")){
+    botReply = "You're welcome! 😊";
+}
+
+else{
+    botReply = "I am still learning. Try asking me something else.";
+}
 
 chat.innerHTML += 
 "<p>Bot: "+botReply+"</p>";
