@@ -5,7 +5,13 @@ function send(){
 
     let input = document.getElementById("input");
     let message = input.value;
+let voice = new SpeechSynthesisUtterance(message);
 
+voice.lang = "en-US";
+voice.rate = 1;
+voice.pitch = 1;
+
+window.speechSynthesis.speak(voice);
     if(message === ""){
         return;
     }
