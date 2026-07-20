@@ -1,3 +1,6 @@
+window.speechSynthesis.speak(
+new SpeechSynthesisUtterance("Hello, voice is working")
+);
 function send(){
 
     let input = document.getElementById("input");
