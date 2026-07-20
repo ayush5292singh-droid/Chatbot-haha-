@@ -22,15 +22,7 @@ let chat = document.getElementById("messages");
 chat.innerHTML += 
 "<p class='user'>You: "+message+"</p>";
 
-
-let reply="I am still learning.";
-
-let q=message.toLowerCase();
-
-
-if(q.includes("hello") || q.includes("hi")){
-    reply="Hello! Nice to meet you.";
-}
+let reply = await getAIReply(message);
 
 else if(q.includes("name")){
     reply="I am your AI Assistant.";
@@ -59,5 +51,22 @@ localStorage.setItem("chat", chat.innerHTML);
 input.value="";
 
 chat.scrollTop=chat.scrollHeight;
+
+}
+async function getAIReply(message){
+
+let response = await fetch("/chat",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+message:message
+})
+});
+
+let data = await response.json();
+
+return data.reply;
 
 }
