@@ -16,6 +16,8 @@ function send(){
     "<p class='user'>You: " + message + "</p>";
 
     let reply = "I am a chatbot. You said: " + message;
+setTimeout(function(){
+
 let voice = new SpeechSynthesisUtterance(reply);
 
 voice.lang = "en-US";
@@ -23,6 +25,8 @@ voice.rate = 1;
 voice.pitch = 1;
 
 window.speechSynthesis.speak(voice);
+
+},500);
     chat.innerHTML += 
     "<p class='bot'>Bot: " + reply + "</p>";
 
