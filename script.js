@@ -1,24 +1,23 @@
-async function send(){
+function send(){
 
-let input = document.getElementById("input");
-let message = input.value;
+    let input = document.getElementById("input");
+    let message = input.value;
 
-if(message.trim()==""){
-    return;
-}
+    if(message === ""){
+        return;
+    }
 
-let chat = document.getElementById("messages");
+    let chat = document.getElementById("messages");
 
-chat.innerHTML += 
-"<p class='user'>You: "+message+"</p>";
+    chat.innerHTML += 
+    "<p class='user'>You: " + message + "</p>";
 
-let reply = "I am thinking...";
+    let reply = "I am a chatbot. You said: " + message;
 
-chat.innerHTML += 
-"<p class='bot'>Bot: "+reply+"</p>";
+    chat.innerHTML += 
+    "<p class='bot'>Bot: " + reply + "</p>";
 
-input.value="";
+    input.value = "";
 
-chat.scrollTop = chat.scrollHeight;
-
+    chat.scrollTop = chat.scrollHeight;
 }
