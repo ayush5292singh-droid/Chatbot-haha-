@@ -42,9 +42,16 @@ window.speechSynthesis.speak(voice);
 }
 function startVoice(){
 
+if(!('webkitSpeechRecognition' in window)){
+    alert("Voice input is not supported in this browser");
+    return;
+}
+
 let recognition = new webkitSpeechRecognition();
 
 recognition.lang = "en-US";
+recognition.continuous = false;
+recognition.interimResults = false;
 
 recognition.onresult = function(event){
 
@@ -53,6 +60,10 @@ let text = event.results[0][0].transcript;
 document.getElementById("input").value = text;
 
 };
+
+recognition.start();
+
+}
 
 recognition.start();
 
