@@ -1,3 +1,12 @@
+window.onload = function(){
+    let oldChat = localStorage.getItem("chat");
+
+    if(oldChat){
+        document.getElementById("messages").innerHTML = oldChat;
+    }
+}
+
+
 function send(){
 
 let input = document.getElementById("input");
@@ -9,17 +18,18 @@ if(message.trim()==""){
 
 let chat = document.getElementById("messages");
 
+
 chat.innerHTML += 
 "<p class='user'>You: "+message+"</p>";
 
 
-let reply = "Sorry, I am still learning.";
+let reply="I am still learning.";
 
-let q = message.toLowerCase();
+let q=message.toLowerCase();
 
 
 if(q.includes("hello") || q.includes("hi")){
-    reply="Hello! How can I help you?";
+    reply="Hello! Nice to meet you.";
 }
 
 else if(q.includes("name")){
@@ -27,24 +37,24 @@ else if(q.includes("name")){
 }
 
 else if(q.includes("math")){
-    reply="I can help you with mathematics.";
+    reply="I can help you solve maths problems.";
 }
 
 else if(q.includes("science")){
-    reply="Science explains how the world works.";
+    reply="I can explain science topics.";
 }
 
-else if(q.includes("who made you")){
-    reply="I was created using HTML, CSS and JavaScript.";
-}
-
-else if(q.includes("thank")){
-    reply="You're welcome!";
+else if(q.includes("bye")){
+    reply="Goodbye! Have a nice day.";
 }
 
 
 chat.innerHTML += 
 "<p class='bot'>Bot: "+reply+"</p>";
+
+
+localStorage.setItem("chat", chat.innerHTML);
+
 
 input.value="";
 
